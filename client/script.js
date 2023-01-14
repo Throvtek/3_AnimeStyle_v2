@@ -6,7 +6,6 @@ const chatContainer = document.querySelector('#chat_container')
 
 let loadInterval
 
-// The three dots loading answer
 function loader(element) {
     element.textContent = ''
 
@@ -18,16 +17,11 @@ function loader(element) {
         if (element.textContent === '....') {
             element.textContent = '';
         }
-        console.log("hola")
     }, 300);
 }
-
-// Type everey word in one character at the time
+// LOAD FULL IMAGE INSTEAD OF THE URL TEXT
 function typeText(element, url) {
-
-    
     element.innerHTML += `<img src=${url} alt="${url}" />`
-        
 }
 
 // generate unique ID for each message div of bot
@@ -83,16 +77,16 @@ const handleSubmit = async (e) => {
     // messageDiv.innerHTML = "..."
     loader(messageDiv)
 
-    //const response = await fetch('https://codex-im0y.onrender.com/', {
-    const response = await fetch('https://three-animestyle-v2.onrender.com', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            prompt: "Give me an anime image of " + data.get('prompt')
-        })
+    //const response = await fetch('http://localhost:5000', { This is the localHost Run
+    const response = await fetch('http://localhost:5000', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        prompt: "Give me a photography of " + data.get('prompt')
     })
+  })
 
     clearInterval(loadInterval)
     messageDiv.innerHTML = " "
