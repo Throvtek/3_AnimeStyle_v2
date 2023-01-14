@@ -78,7 +78,7 @@ const handleSubmit = async (e) => {
     loader(messageDiv)
 
     //const response = await fetch('http://localhost:5000', { This is the localHost Run
-    const response = await fetch('http://localhost:5000', {
+    const response = await fetch('https://three-animestyle-v2.onrender.com', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
